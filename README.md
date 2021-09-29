@@ -1,1 +1,1 @@
-# STI-Proj1
+# Manuel d'utilisation
