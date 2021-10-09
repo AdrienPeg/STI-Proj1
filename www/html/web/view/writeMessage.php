@@ -33,117 +33,46 @@
 
 <?php
 
-//inclusion connexion à base de données
-if( include ('/usr/share/nginx/html/web/functions/connectDB.php') ) {
-} else {
-    echo 'Failed to load database';
-}//connexion à la base de données
+include_once ("/usr/share/nginx/html/web/functions/database.php");
+$bdd = new database();
 
-$message = $bdd->query("SELECT * FROM Message WHERE Message.id = '".$_POST['messageDetailsTab']."'")->fetch();
 ?>
 <div id="ajout-articles">
     <div style="border-bottom: 1px solid #C4C3C3;" class= "container" id ="formulaire">
-        <h1 style="text-decoration: underline;">Ajout Produit :<h1>
+        <h1 style="text-decoration: underline;">Ecrire un message :<h1>
                 <h4>
                     <!-- Création du formulaire -->
                     <div class= "row">
                         <div class="col">
-                            <form action="web/functions/insert.php" method="post" enctype="multipart/form-data">
+                            <form action="web/functions/send.php" method="post" enctype="multipart/form-data">
                                 <p>
-                                    <label for="prix">Prix :</label>
-                                    <input type="number" name="prix" id="prix" class="form-control" required>
-                                </p>
-                                <p>
-                                    <label for="couleurBracelet">Couleur Bracelet :</label>
-                                    <select id="couleurBracelet" name="couleurBracelet" class="form-control" required>
+                                    <label for="destinataire">Destinataire :</label>
+                                    <select id="destinataire" name="destinataire" class="form-control" required>
                                         <?php
                                         //Selection de toutes les couleurs autorisées pour le bracelet de ce modèle.
-                                        $query = "SELECT * FROM Modele_Couleur_Bracelet WHERE Modele_Couleur_Bracelet.idModele =".$modele['id'];
-                                        $couleursB = $bdd->query($query)->fetchAll();
-                                        foreach($couleursB as $row) {
-                                            $couleurNom = $bdd->query("SELECT * FROM couleur WHERE couleur.id =".$row['idCouleur'])->fetch();
-                                            echo "<option value='{$row['idCouleur']}' selected='selected'>{$couleurNom['nom']}</option>";
+                                        echo 'Pre-call';
+                                        $users = $bdd->getAllUsers();
+                                        echo 'Post-call';
+                                        foreach($users as $row) {
+                                            if(isset($_POST['answerTab']) && $_POST['answerTab'] == $row['id']){
+                                                echo "<option value='{row['id']}'selected='selected'>{$row['username']}</option>";
+                                            }
+                                            else
+                                            {
+                                                echo "<option value='{$row['id']}'>{$row['username']}</option>";
+                                            }
                                         }
                                         ?>
                                     </select>
                                 </p>
                                 <p>
-                                    <label for="couleurBoitier">Couleur Boîtier :</label>
-                                    <select id="couleurBoitier" name="couleurBoitier" class="form-control" required>
-                                        <?php
-                                        //Selection de toutes les couleurs autorisées pour le boitier de ce modèle.
-                                        $query = "SELECT * FROM Modele_Couleur_Boitier WHERE Modele_Couleur_Boitier.idModele =".$modele['id'];
-                                        $couleursB = $bdd->query($query)->fetchAll();
-                                        foreach($couleursB as $row) {
-                                            $couleurNom = $bdd->query("SELECT * FROM couleur WHERE couleur.id =".$row['idCouleur'])->fetch();
-                                            echo "<option value='{$row['idCouleur']}' selected='selected'>{$couleurNom['nom']}</option>";
-                                        }
-                                        ?>
-                                    </select>
+                                    <label for="sujet">Sujet</label>
+                                    <input type="text" name="sujet" id="sujet" class="form-control" required>
                                 </p>
                                 <p>
-                                    <label for="couleurCadran">Couleur Cadran :</label>
-                                    <select id="couleurCadran" name="couleurCadran"  class="form-control" required>
-                                        <?php
-                                        //Selection de toutes les couleurs autorisées pour le cadran de ce modèle.
-                                        $query = "SELECT * FROM Modele_Couleur_Cadran WHERE Modele_Couleur_Cadran.idModele =".$modele['id'];
-                                        $couleursB = $bdd->query($query)->fetchAll();
-                                        foreach($couleursB as $row) {
-                                            $couleurNom = $bdd->query("SELECT * FROM couleur WHERE couleur.id =".$row['idCouleur'])->fetch();
-                                            echo "<option value='{$row['idCouleur']}' selected='selected'>{$couleurNom['nom']}</option>";
-                                        }
-                                        ?>
-                                    </select>
+                                    <label for="message">Message</label>
+                                    <input type="text" name="message" id="message" class="form-control" required>
                                 </p>
-                        </div>
-                        <div class="col">
-                            <p>
-                                <label for="matiereBoitier">Matière Boîtier :</label>
-                                <select id="matiereBoitier" name="matiereBoitier"  class="form-control" required>
-                                    <?php
-                                    //Selection de toutes les couleurs autorisées pour le bracelet de ce modèle. Valeur par défaut = valeur utilisée par le produit
-                                    $query = "SELECT * FROM Modele_Matiere_Boitier WHERE Modele_Matiere_Boitier.idModele =".$modele['id'];
-                                    $couleursB = $bdd->query($query)->fetchAll();
-                                    foreach($couleursB as $row) {
-                                        $matiereNom = $bdd->query("SELECT * FROM matiere WHERE matiere.id =".$row['idMatiereBoitier'])->fetch();
-                                        echo "<option value='{$row['idMatiereBoitier']}' selected='selected'>{$matiereNom['nom']}</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </p>
-                            <p>
-                                <label for="matiereBracelet">Matière Bracelet :</label>
-                                <select id="matiereBracelet" name="matiereBracelet"  class="form-control" required>
-                                    <?php
-                                    //Selection de toutes les matières autorisées pour le bracelet de ce modèle.
-                                    $query = "SELECT * FROM Modele_Matiere_Bracelet WHERE Modele_Matiere_Bracelet.idModele =".$modele['id'];
-                                    $couleursB = $bdd->query($query)->fetchAll();
-                                    foreach($couleursB as $row) {
-                                        $matiereNom = $bdd->query("SELECT * FROM matiere WHERE matiere.id =".$row['idMatiereBracelet'])->fetch();
-                                        echo "<option value='{$row['idMatiereBracelet']}' selected='selected'>{$matiereNom['nom']}</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </p>
-                            <p>
-                                <label for="fermoir">Fermoir :</label>
-                                <select id="fermoir" name="fermoir"  class="form-control" required>
-                                    <?php
-                                    //Selection de tous les fermoirs.
-                                    $query = "SELECT * FROM fermoir";
-                                    $fermoirs = $bdd->query($query)->fetchAll();
-                                    foreach($fermoirs as $row) {
-                                        echo "<option value='{$row['id']}' selected='selected'>{$row['fermoirBracelet']}</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </p>
-                            <p>
-                                <label for="lienMedia">Image :</label>
-                                <input type="file" name="lienMedia" id="lienMedia" class="form-control">
-                            </p>
-                            <input type="hidden" name="insertProduct" value="<?php echo $row['id']; ?>"/>
-                            <input class='btn btn-secondary btn-md' type="submit" value="Ajouter" style="float:right;" />
                             </form>
                         </div>
                     </div>

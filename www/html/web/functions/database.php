@@ -32,7 +32,7 @@ class database
             $this->disconnect();
             if (isset($result) && $password == $result['password']) {
                 $_SESSION['type'] = $result['type'];
-                $_SESSION['username'] = username;
+                $_SESSION['username'] = $username;
                 return true;
             } else {
                 return false;
@@ -96,6 +96,24 @@ class database
             $this->disconnect();
             return null;
         }
+    }
+
+    public function getAllUsers()
+    {
+        $this->connect();
+        $stmt=$this->bdd->query("SELECT * FROM Utilisateurs");
+        $users=$stmt->fetchAll();
+        $this->disconnect();
+        return $users;
+    }
+
+    public function getIdFromUsername($username)
+    {
+        $this->connect();
+        $stmt=$this->bdd->query("SELECT id FROM Utilisateurs WHERE username='".$username."'");
+        $id=$stmt->fetch();
+        $this->disconnect();
+        return $id;
     }
 
 }
