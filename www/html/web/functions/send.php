@@ -5,7 +5,7 @@ $bdd = new database();
 
 $idReceiver=$_POST['destinataire'];
 $subject=$_POST['sujet'];
-$idSender=$bdd->getIdFromUsername($_SESSION['username']);
+$idSender=$_SESSION['id'];
 $date=date("d/m/Y");
 $body=$_POST['message'];
 

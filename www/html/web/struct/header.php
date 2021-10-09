@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="logo">
-		<a href="index.php"><h1>WatchOut</h1></a>
+		<a href="index.php"><h1>Messagerie</h1></a>
 	</div>
 	<div class="header-bottom"> 
 		<div class="container">
@@ -48,7 +48,16 @@
 						</li>
 	
 						<li class="grid <?= isset($_GET['login'])&&$_GET['login']=='admin' ? 'active' : ''; ?>"><a href="<?php echo'?page=messages&cat=admin'?>"><h4>Admin</h4></a> <!--on passe le paramètre cat femme pour afficher les produits femme -->
-						</li>
+                        </li>
+                        <li>
+                            <?php if($_SESSION['loggedin']==true)
+                                { ?>
+                            <form action= "web/functions/login.php" method="post">
+                                <input type="hidden" name="disconnect" value="1" />
+                                <input class='btn btn-secondary btn-sm' type="submit"  value="Disconnect" />
+                            </form>
+                            <?php } ?>
+                        </li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>

@@ -33,6 +33,8 @@ class database
             if (isset($result) && $password == $result['password']) {
                 $_SESSION['type'] = $result['type'];
                 $_SESSION['username'] = $username;
+                $_SESSION['id'] = $result['id'];
+                $_SESSION['loggedin']=true;
                 return true;
             } else {
                 return false;
@@ -41,6 +43,11 @@ class database
             $this->disconnect();
             return false;
         }
+    }
+
+    public function unlogin()
+    {
+        session_destroy();
     }
 
     public function deleteMessage($idMessage)

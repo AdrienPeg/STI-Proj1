@@ -44,6 +44,11 @@
         {
             include ("web/view/userCreation.php");
         }
+        if($_GET['page'] == "home")
+        {
+            include ("web/view/home.php");
+        }
+
 	}
 	else
 	{

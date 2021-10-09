@@ -37,16 +37,12 @@ $bdd = new database();
 
             <?php
 
-            //if(!isset($_POST['userid'])){ echo $_POST['userid'];} else { header("Location: http://localhost/WatchOut/?page=index.php");} //Redirection si pas connecté
+            if ($_SESSION['loggedin']==false)
+            {
+                header("Location: http://localhost:8080/index.php?page=home");
+            }
 
-            $userid = $_POST['userid'];
-            //Sélection des données shouaitées dans la BD
-            //$queryaffMessage=$bdd->prepare("SELECT * FROM Messages WHERE id_recepteur='".$userid."' ORDER BY date DESC");   //l'entrée 1 de la table genre correspond à homme
-            /*$queryaffMessage=$bdd->prepare("SELECT * FROM Message WHERE id_recepteur='".$userid."'");
-            $queryaffMessage->execute();
-            $queryaffMessage->errorinfo();
-            $messages=$queryaffMessage->fetchAll();
-            $queryaffMessage->CloseCursor();*/
+            $userid = $_SESSION['id'];
             $messages=$bdd->getMessages($userid);
 
 
