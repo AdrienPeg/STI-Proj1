@@ -51,7 +51,7 @@ $bdd = new database();
             //Création du tableau qui contiendra nos données
             echo "<table class='table'>
 						<tr>
-						<th>ID User</th>
+						<th>ID Message</th>
 						<th>Date de réception</th>
 						<th>Expéditeur</th>
 						<th>Sujet</th>
@@ -59,10 +59,11 @@ $bdd = new database();
 
             //Création d'une boucle qui ira chercher les données demandées et les affichera dans un tableau
             foreach($messages as $message){
+                $username=$bdd->getUsernameFromId($message['id_expediteur']);
                 echo "<tr>";
                 echo "<td>" . $message['id'] . "</td>";
                 echo "<td>" . $message['date'] . "</td>";
-                echo "<td>" . $message['id_expediteur'] . "</td>";
+                echo "<td>" . $username['username'] . "</td>";
                 echo "<td>" . $message['subject'] . "</td>";
                 ?>
                 <!-- Création du bouton delete / edit dans le tableau qui supprimera / editera la ligne à laquelle il est -->

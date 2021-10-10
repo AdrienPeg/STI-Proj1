@@ -88,11 +88,16 @@
                 <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>" />
                 <input class='btn btn-secondary btn-sm' type="submit" value="Editer le mot de passe" />
             </form>
-            <?php if(isset($_SESSION['type']) && $_SESSION['type']==1){ ?>
+            <?php if(isset($_SESSION['type']) && $_SESSION['type']=='admin'){ ?>
             <form action= "<?php echo'?page=users'?>" method="post">
                 <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>" />
-                <input class='btn btn-secondary btn-sm' type="submit" value="Editer le mot de passe" />
+                <input class='btn btn-secondary btn-sm' type="submit" value="Liste des utilisateurs" />
             </form>
+            <form action= "<?php echo'?page=newUser'?>" method="post">
+                <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>" />
+                <input class='btn btn-secondary btn-sm' type="submit" value="Créer un nouvel utilisateur" />
+            </form>
+
             <?php } ?>
         </div>
     </div>

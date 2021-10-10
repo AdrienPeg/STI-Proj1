@@ -52,6 +52,19 @@
         {
             include ("web/view/editPassword.php");
         }
+        if($_GET['page'] == "newUser")
+        {
+            include ("web/view/newUser.php");
+        }
+        if($_GET['page'] == "createUser")
+        {
+            include ("web/view/createUser.php");
+        }
+
+
+
+
+
 
 
 	}

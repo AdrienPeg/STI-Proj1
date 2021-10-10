@@ -12,7 +12,7 @@
 #
 #################################################################
 #
-#	Page: userEdit.php (Permet l'édition d'un utilisateur)
+#	Page: writeMessage.php (Ecriture et envoi d'un message)
 #
 ################################################################
 
@@ -35,46 +35,49 @@
 
 include_once ("/usr/share/nginx/html/web/functions/database.php");
 $bdd = new database();
-$user=$bdd->getUserInfo($_POST['editUserTab']);
 
 ?>
 <div id="ajout-articles">
     <div style="border-bottom: 1px solid #C4C3C3;" class= "container" id ="formulaire">
-        <h1 style="text-decoration: underline;">Modifier utilisateur :<h1>
+        <h1 style="text-decoration: underline;">Créer un nouvel utilisateur :<h1>
                 <h4>
                     <!-- Création du formulaire -->
                     <div class= "row">
                         <div class="col">
-                            <form action="web/functions/editUser.php" method="post" enctype="multipart/form-data">
-                                <?php if(isset($_POST['editResult'])){
-                                    if($_POST['editResult']==true) {
-                                        echo '<p> User edited </p>';
-                                    } else { echo '<p> User edit failed </p>'.$_POST['edit_result'];}
+                            <form action="web/functions/createUser.php" method="post" enctype="multipart/form-data">
+                                <?php if(isset($_POST['result'])){
+                                    if($_POST['result']==true) {
+                                        echo '<p> User created </p>';
+                                    } else { echo '<p> User creation failed </p>';}
                                 } ?>
                                 <p>
                                     <label for="user">Nom d'utilisateur</label>
-                                    <input type="text" name="username" id="username" class="form-control" required disabled="disabled" value="<?php echo $user['username'];?>">
+                                    <input type="text" name="username" id="username" class="form-control" required>
                                 </p>
                                 <p>
-                                    <label for="password">Mot de passe :</label>
-                                    <input type="text" name="password" id="password" class="form-control" required value="<?php echo $user['password'];?>">
+                                    <label for="password">Mot de passe</label>
+                                    <input type="text" name="password" id="password" class="form-control" required>
                                 </p>
                                 <p>
-                                    <label for="valid">Validité :</label>
-                                    <select id="valid" name="valid" class="form-control" required>
-                                        <option value='0' <?php if($user['valid'] == 0) echo 'selected="selected"';?>>Invalide</option>";
-                                        <option value='1' <?php if($user['valid'] == 1) echo 'selected="selected"';?>>Valide</option>";
+                                    <label for="passwordAgain">Entrez à nouveau le mot de passe</label>
+                                    <input type="text" name="passwordAgain" id="Again" class="form-control" required>
+                                </p>
+                                <p>
+                                    <label for="validity">Validité :</label>
+                                    <select id="validity" name="validity" class="form-control" required>
+                                        <option value='0'>Invalide</option>";
+                                        <option value='1'>Valide</option>";
                                     </select>
                                 </p>
                                 <p>
-                                    <label for="type">Rôle :</label>
-                                    <select id="type" name="type" class="form-control" required>
-                                        <option value='user'<?php if($user['type'] == 'user') echo 'selected="selected"'?>>Utilisateur</option>";
-                                        <option value='admin'<?php if($user['type'] == 'admin') echo 'selected="selected"'?>>Administrateur</option>";
+                                    <label for="role">Rôle :</label>
+                                    <select id="role" name="role" class="form-control" required>
+                                        <option value='user'>Utilisateur</option>";
+                                        <option value='admin'>Administrateur</option>";
                                     </select>
                                 </p>
-                                <input type="hidden" name="id" id="id" class="form-control" required value="<?php echo $user['id'];?>">
-                                <input class='btn btn-secondary btn-md' type="submit" value="Modifier" style="float:right;" />
+
+                                <input class='btn btn-secondary btn-md' type="submit" value="Créer" style="float:right;" />
                             </form>
                         </div>
                     </div>

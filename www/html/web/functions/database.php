@@ -114,13 +114,13 @@ class database
         return $users;
     }
 
-    public function getIdFromUsername($username)
+    public function getUsernameFromId($id)
     {
         $this->connect();
-        $stmt=$this->bdd->query("SELECT id FROM Utilisateurs WHERE username='".$username."'");
-        $id=$stmt->fetch();
+        $stmt=$this->bdd->query("SELECT username FROM Utilisateurs WHERE id='".$id."'");
+        $username=$stmt->fetch();
         $this->disconnect();
-        return $id;
+        return $username;
     }
 
     public function changePassword($oldPassword, $newPassword, $newPasswordAgain)
@@ -143,6 +143,52 @@ class database
         } catch (Exception $e) {
             $this->disconnect();
             return false;
+        }
+    }
+
+    public function createUser($username, $password, $passwordAgain, $valid, $type)
+    {
+        try {
+            if($password != $passwordAgain)
+            {
+                return false;
+            }
+            $this->connect();
+            $res=$this->bdd->exec("INSERT INTO `Utilisateurs` (`id`, `username`, `password`, `valid`, `type`) VALUES (NULL, '$username', '$password', '$valid', '$type')");
+            $this->disconnect();
+            return $res;
+        } catch(Exception $e){
+            $this->disconnect();
+            return null;
+        }
+    }
+
+    public function getUserInfo($id)
+    {
+        try{
+            $this->connect();
+            $stmt=$this->bdd->query("SELECT * FROM Utilisateurs WHERE id='".$id."'");
+            $user=$stmt->fetch();
+            $this->disconnect();
+            return $user;
+
+        }catch (Exception $e)
+        {
+            $this->disconnect();
+            return null;
+        }
+    }
+
+    public function editUser($id, $password, $valid, $type)
+    {
+        try {
+            $this->connect();
+            $res=$this->bdd->exec("UPDATE Utilisateurs SET password='".$password."', valid='".$valid."', type='".$type."' WHERE id='".$id."'");
+            $this->disconnect();
+            return $res;
+        } catch (Exception $e) {
+            $this->disconnect();
+            return null;
         }
     }
 
