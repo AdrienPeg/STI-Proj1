@@ -4,9 +4,7 @@ $bdd = new database();
 
 if(isset($_POST['disconnect']) && !empty($_POST['disconnect']))
 {
-    echo 'Lets go';
     $bdd->unlogin();
-    echo 'done';
     header("Location: http://localhost:8080/index.php?page=home");
     exit;
 }
@@ -14,13 +12,7 @@ if(isset($_POST['disconnect']) && !empty($_POST['disconnect']))
 $username=$_POST['username'];
 $password=$_POST['password'];
 $res=$bdd->login($username,$password);
-if($res)
-{
-    header("Location: http://localhost:8080/index.php?page=messages");
-    exit;
-}
-else
-{
-    header("Location: http://localhost:8080/index.php?page=home");
-    exit;
-}
+?>
+<form name="redirect" method="post" action= "<?php echo'http://localhost:8080/index.php?page=home"'?>" enctype="multipart/form-data">
+<input type="hidden" name="login_result" value="<?php echo $res ?>">
+<script language="JavaScript">document.redirect.submit();</script></form>

@@ -48,6 +48,11 @@
         {
             include ("web/view/home.php");
         }
+        if($_GET['page'] == "editPassword")
+        {
+            include ("web/view/editPassword.php");
+        }
+
 
 	}
 	else

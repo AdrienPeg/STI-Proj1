@@ -22,33 +22,6 @@
 <html>
 
 <div class="information">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm infor-left"><center>
-					<h3>Suivez-nous</h3>
-					<ul>
-						<li><p><a href="facebook.com">Facebook</a></p></li>
-						<li><p><a href="twitter.com">Twitter</a></p></li>
-						<li><p><a href="google.com">Google+</a></p></li>
-					</ul>
-				</div>
-				<div class="col-sm infor-left"><center>
-					<h3>Informations</h3>
-					<ul>
-						<li><h4>Contactez-nous</h4></li>
-						<li><h4>Flux RSS</h4></li>
-					</ul>
-				</div>
-				<div class="col-sm infor-left"><center>
-					<h3>Informations sur le magasin</h3>
-					<h4>WatchOut,
-						<span>Genève, Suisse</span>
-						CP 1201</h4>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div class="footer">
 		<div class="container">
 			<div class="footer-top" class="col-md-6 footer-right">
@@ -61,7 +34,7 @@
 	</div>
 
 <head>
-<title>WatchOut</title>
+<title>Messagerie</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jquery permettant le lancement du bootsrap javascript-->
 <script src="js/jQuery.min.js"></script>

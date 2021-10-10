@@ -44,38 +44,25 @@ $bdd = new database();
                     <!-- Création du formulaire -->
                     <div class= "row">
                         <div class="col">
-                            <form action="web/functions/send.php" method="post" enctype="multipart/form-data">
+                            <form action="web/functions/password.php" method="post" enctype="multipart/form-data">
+                                    <?php if(isset($_POST['result'])){
+                                        if($_POST['result']==true) {
+                                            echo '<p> Password changed </p>';
+                                        } else { echo '<p> Password change failed </p>';}
+                                    } ?>
                                 <p>
-                                    <label for="destinataire">Destinataire :</label>
-                                    <select id="destinataire" name="destinataire" class="form-control" required>
-                                        <?php
-                                        //Selection de toutes les couleurs autorisées pour le bracelet de ce modèle.
-                                        echo 'Pre-call';
-                                        $users = $bdd->getAllUsers();
-                                        echo 'Post-call';
-                                        foreach($users as $row) {
-                                            if(isset($_POST['answerTab']) && $_POST['answerTab'] == $row['id']){
-                                                echo "<option value='{row['id']}'selected='selected'>{$row['username']}</option>";
-                                            }
-                                            else
-                                            {
-                                                if($row['id'] != $_SESSION['id']) {
-                                                    echo "<option value='{$row['id']}'>{$row['username']}</option>";
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
+                                    <label for="sujet">Ancien mot de passe</label>
+                                    <input type="text" name="old" id="old" class="form-control" required>
                                 </p>
                                 <p>
-                                    <label for="sujet">Sujet</label>
-                                    <input type="text" name="sujet" id="sujet" class="form-control" required>
+                                    <label for="sujet">Nouveau mot de passe</label>
+                                    <input type="text" name="new" id="new" class="form-control" required>
                                 </p>
                                 <p>
-                                    <label for="message">Message</label>
-                                    <input type="text" name="message" id="message" class="form-control" required>
+                                    <label for="message">Répéter le nouveau mot de passe</label>
+                                    <input type="text" name="newAgain" id="newAgain" class="form-control" required>
                                 </p>
-                                <input class='btn btn-secondary btn-md' type="submit" value="Envoyer" style="float:right;" />
+                                <input class='btn btn-secondary btn-md' type="submit" value="Changer" style="float:right;" />
                             </form>
                         </div>
                     </div>

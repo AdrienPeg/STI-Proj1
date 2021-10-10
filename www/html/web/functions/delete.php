@@ -25,6 +25,7 @@ $retManage=0;
 //Condition de suppresion des données shouaitées pointant sur le formulaire admin pour le produit
 if((isset($_POST['deleteMessageTab'])) && (!empty($_POST['deleteMessageTab']))) {
     $bdd->deleteMessage($_POST['deleteMessageTab']);
+    header("Location: http://localhost:8080/index.php?page=home");
 }
 else if(isset($_POST['deleteUserTab'])) //Suppression d'autorisation de couleur pour le modèle d'un bracelet
 {

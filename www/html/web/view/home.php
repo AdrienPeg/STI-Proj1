@@ -19,33 +19,25 @@
 ?>
 
 <?php
-if(isset($_SESSION['username']) && $_SESSION['id'] ){
-    header("location: localhost:8080/index.php?home.php");
-    exit;
-}
+
 ?>
 <!DOCTYPE html>
 <html>
 <header>
     <style>
-        .wrapper{ width: 360px; padding: 20px; }
+        .wrapper {
+            width: 360px;
+            padding: 20px;
+            margin: auto;
+        }
     </style>
 </header>
 <body>
-<div class="container">
-	<div class="row">
-		<div align="center" style="height:400px;">
-			<h1 align="center">Bienvenue sur la messagerie </h1>
-			<h2 align="center">Projet STI</h2> </br> </br>
-			<h5 align="center">Auteurs : Adrien Peguiron, Nicolas Viotti</h5>
 
-            <form action= "<?php echo'?page=messages'?>" method="post">
-                <input type="hidden" name="userid" value="<?php echo '2'; ?>" />
-                <input class='btn btn-secondary btn-sm' type="submit" value="messages" />
-            </form>
-		</div>
-	</div>
-</div>
+<?php if(!isset($_SESSION) || !isset($_SESSION['loggedin'])  || !isset($_SESSION['username']) || $_SESSION['loggedin'] == false) {
+?>
+
+
 <div class="wrapper">
     <h2>Login</h2>
     <p>Please fill in your credentials to login.</p>
@@ -59,25 +51,60 @@ if(isset($_SESSION['username']) && $_SESSION['id'] ){
     <form action="web/functions/login.php" method="post">
         <div class="form-group">
             <label>Username</label>
-            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>"required >
             <span class="invalid-feedback"><?php echo $username_err; ?></span>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"required>
             <span class="invalid-feedback"><?php echo $password_err; ?></span>
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Login">
         </div>
+        <?php if(isset($_POST['login_result']) && $_POST['login_result'] == false) {
+           echo '<p> Login failed </p>';
+        }?>
     </form>
 </div>
+<?php } else { ?>
+
+<div class="container">
+    <div class="row">
+        <div align="center" style="height:400px;">
+            <h1 align="center">Bienvenue sur la messagerie </h1>
+            <h2 align="center">Projet STI</h2> </br> </br>
+            <h5 align="center">Auteurs : Adrien Peguiron, Nicolas Viotti</h5>
+
+            <form action= "<?php echo'?page=messages'?>" method="post">
+                <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>" />
+                <input class='btn btn-secondary btn-sm' type="submit" value="Boite de réception" />
+            </form>
+            <form action= "<?php echo'?page=writeMessage'?>" method="post">
+                <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>" />
+                <input class='btn btn-secondary btn-sm' type="submit" value="Nouveau message" />
+            </form>
+            <form action= "<?php echo'?page=editPassword'?>" method="post">
+                <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>" />
+                <input class='btn btn-secondary btn-sm' type="submit" value="Editer le mot de passe" />
+            </form>
+            <?php if(isset($_SESSION['type']) && $_SESSION['type']==1){ ?>
+            <form action= "<?php echo'?page=users'?>" method="post">
+                <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>" />
+                <input class='btn btn-secondary btn-sm' type="submit" value="Editer le mot de passe" />
+            </form>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+ <?php } ?>
+
 </body>
 </body>
 
 <head>
 <!-- Inclusion du header avec lien vers les fichiers css et les scripts js -->
-<title>WatchOut</title>
+<title>Messagerie</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jquery permettant le lancement du bootsrap javascript-->
 <script src="js/jQuery.min.js"></script>

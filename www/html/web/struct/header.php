@@ -43,12 +43,7 @@
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li><a href="index.php"><h4>Home</h4></a></li>				
-						<li class="grid <?= isset($_GET['login'])&&$_GET['login']=='user' ? 'active' : ''; ?>"><a href="<?php echo'?page=messages&cat=user'?>"><h4>User</h4></a>	<!--on passe le paramètre cat homme pour afficher les produits homme -->
-						</li>
-	
-						<li class="grid <?= isset($_GET['login'])&&$_GET['login']=='admin' ? 'active' : ''; ?>"><a href="<?php echo'?page=messages&cat=admin'?>"><h4>Admin</h4></a> <!--on passe le paramètre cat femme pour afficher les produits femme -->
-                        </li>
+					<ul class="memenu skyblue"><li><a href="index.php"><h4>Home</h4></a></li>
                         <li>
                             <?php if($_SESSION['loggedin']==true)
                                 { ?>

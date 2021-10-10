@@ -73,7 +73,7 @@ $bdd = new database();
 <!-- Inclusion du header avec lien vers les fichiers css et les scripts js -->
 <head>
     <!-- Inclusion du header avec lien vers les fichiers css et les scripts js -->
-    <title>WatchOut</title>
+    <title>Messagerie</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- jquery permettant le lancement du bootsrap javascript-->
     <script src="js/jQuery.min.js"></script>

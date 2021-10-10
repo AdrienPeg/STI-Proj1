@@ -24,7 +24,7 @@ session_start();
 <!-- On crée la structure primaire du site web et on y ajoute les différentes pages -->
 
 <head>
-    <title>WatchOut</title>
+    <title>Messagerie</title>
 </head>
 <body>
 <table border=0 width=100%>

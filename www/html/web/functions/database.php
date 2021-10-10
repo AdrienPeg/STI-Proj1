@@ -9,7 +9,6 @@ class database
     private function connect()
     {
         try {
-            echo 'Connected';
             $this->bdd = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
             $this->bdd->setAttribute(PDO::ATTR_ERRMODE,
                 PDO::ERRMODE_EXCEPTION);
@@ -37,6 +36,7 @@ class database
                 $_SESSION['loggedin']=true;
                 return true;
             } else {
+                $_SESSION['loggedin']=false;
                 return false;
             }
         } catch (Exception $e) {
@@ -97,7 +97,7 @@ class database
     {
         try {
         $this->connect();
-        $this->bdd->exec("INSERT INTO `produit` (`id`, `date`, `id_expediteur`, `subject`, `body`, `id_recepteur`) VALUES (NULL, '$date', '$idSender', '$subject', '$body', '$idReceiver')");
+        $this->bdd->exec("INSERT INTO `Message` (`id`, `date`, `id_expediteur`, `subject`, `body`, `id_recepteur`) VALUES (NULL, '$date', '$idSender', '$subject', '$body', '$idReceiver')");
         $this->disconnect();
         } catch(Exception $e){
             $this->disconnect();
@@ -121,6 +121,29 @@ class database
         $id=$stmt->fetch();
         $this->disconnect();
         return $id;
+    }
+
+    public function changePassword($oldPassword, $newPassword, $newPasswordAgain)
+    {
+        try {
+            $this->connect();
+            $stmt=$this->bdd->query("SELECT *FROM Utilisateurs WHERE id='".$_SESSION['id']."'");
+            $user=$stmt->fetch();
+            if($user['password']==$oldPassword && $newPassword == $newPasswordAgain && $oldPassword != $newPassword){
+                $this->bdd->exec("UPDATE Utilisateurs SET password='".$newPassword."' WHERE id='".$_SESSION['id']."'");
+                $this->disconnect();
+                return true;
+            }
+            else{
+                $this->disconnect();
+                return false;
+            }
+
+
+        } catch (Exception $e) {
+            $this->disconnect();
+            return false;
+        }
     }
 
 }
