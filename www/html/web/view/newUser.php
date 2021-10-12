@@ -85,7 +85,7 @@ $redirect = $bdd->verifyAdmin(); //Vérifie que la session soit celle d'un admin
                                         ";
                                     </select>
                                 </p>
-
+                                <button class="btn btn-secondary btn-md" onclick="history.go(-1);">Back </button>
                                 <input class='btn btn-secondary btn-md' type="submit" value="Créer"
                                        style="float:right;"/>
                             </form>

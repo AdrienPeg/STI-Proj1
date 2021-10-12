@@ -74,6 +74,7 @@ $bdd->verifyUser();
                                     <label for="message">Message</label>
                                     <input type="text" name="message" id="message" class="form-control" required>
                                 </p>
+                                <button class="btn btn-secondary btn-md" onclick="history.go(-1);">Back </button>
                                 <input class='btn btn-secondary btn-md' type="submit" value="Envoyer"
                                        style="float:right;"/>
                             </form>

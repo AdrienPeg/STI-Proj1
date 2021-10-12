@@ -65,7 +65,7 @@ $bdd->verifyUser();
 
             echo "</table>";
             ?>
-            <h4>
+            <button class="btn btn-secondary btn-md" onclick="history.go(-1);">Back </button>
     </div>
 </div>
 

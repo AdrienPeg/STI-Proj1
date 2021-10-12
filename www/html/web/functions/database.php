@@ -3,7 +3,8 @@ date_default_timezone_set('UTC');
 session_start();
 
 /**
- * Classe contenant les fonctions faisant appel à la base de donnése
+ * Classe contenant les fonctions faisant appel à la base de données
+ * Auteurs : Peguiron A., Viotti N.
  */
 class database
 {

@@ -64,6 +64,7 @@ $bdd->verifyUser();
                                     <label for="message">Répéter le nouveau mot de passe</label>
                                     <input type="text" name="newAgain" id="newAgain" class="form-control" required>
                                 </p>
+                                <button class="btn btn-secondary btn-md" onclick="history.go(-1);">Back </button>
                                 <input class='btn btn-secondary btn-md' type="submit" value="Changer"
                                        style="float:right;"/>
                             </form>
