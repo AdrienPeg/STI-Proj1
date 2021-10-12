@@ -24,7 +24,7 @@ Le bouton `Disconnect` vous permets de quitter votre compte et retourner à la p
 
 En appuyant sur le bouton `boite de réception`, vous arrivez sur la page suivante : 
 
-![login](figures\mailbox.png)
+![login](figures/mailbox.png)
 
 Sur cette page, vous pouvez voir les messages reçus. 
 
