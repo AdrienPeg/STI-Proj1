@@ -21,8 +21,7 @@
 <!DOCTYPE html>
 <html>
 <script>
-    function submitForm(action)
-    {
+    function submitForm(action) {
         document.getElementById('formulaire').action = action;
         document.getElementById('formulaire').submit();
     }
@@ -33,16 +32,18 @@
 
 <?php
 
-include_once ("/usr/share/nginx/html/web/functions/database.php");
+include_once("/usr/share/nginx/html/web/functions/database.php");
 $bdd = new database();
+$bdd->verifyUser();
 
 ?>
 <div id="ajout-articles">
-    <div style="border-bottom: 1px solid #C4C3C3;" class= "container" id ="formulaire">
-        <h1 style="text-decoration: underline;">Ecrire un message :<h1>
+    <div style="border-bottom: 1px solid #C4C3C3;" class="container" id="formulaire">
+        <h1 style="text-decoration: underline;">Ecrire un message :
+            <h1>
                 <h4>
                     <!-- Création du formulaire -->
-                    <div class= "row">
+                    <div class="row">
                         <div class="col">
                             <form action="web/functions/send.php" method="post" enctype="multipart/form-data">
                                 <p>
@@ -53,13 +54,11 @@ $bdd = new database();
                                         echo 'Pre-call';
                                         $users = $bdd->getAllUsers();
                                         echo 'Post-call';
-                                        foreach($users as $row) {
-                                            if(isset($_POST['answerTab']) && $_POST['answerTab'] == $row['id']){
+                                        foreach ($users as $row) {
+                                            if (isset($_POST['answerTab']) && $_POST['answerTab'] == $row['id']) {
                                                 echo "<option value='{row['id']}'selected='selected'>{$row['username']}</option>";
-                                            }
-                                            else
-                                            {
-                                                if($row['id'] != $_SESSION['id']) {
+                                            } else {
+                                                if ($row['id'] != $_SESSION['id']) {
                                                     echo "<option value='{$row['id']}'>{$row['username']}</option>";
                                                 }
                                             }
@@ -75,7 +74,8 @@ $bdd = new database();
                                     <label for="message">Message</label>
                                     <input type="text" name="message" id="message" class="form-control" required>
                                 </p>
-                                <input class='btn btn-secondary btn-md' type="submit" value="Envoyer" style="float:right;" />
+                                <input class='btn btn-secondary btn-md' type="submit" value="Envoyer"
+                                       style="float:right;"/>
                             </form>
                         </div>
                     </div>
@@ -89,17 +89,25 @@ $bdd = new database();
 <head>
     <!-- Inclusion du header avec lien vers les fichiers css et les scripts js -->
     <title>Messagerie</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- jquery permettant le lancement du bootsrap javascript-->
     <script src="js/jQuery.min.js"></script>
     <!--Fichier du thème-->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        } </script>
+    <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
     <script type="text/javascript" src="js/memenu.js"></script>
-    <script>$(document).ready(function(){$(".memenu").memenu();});</script>
+    <script>$(document).ready(function () {
+            $(".memenu").memenu();
+        });</script>
     <!--Déroulement facilité de la page-->
 
 </head>
