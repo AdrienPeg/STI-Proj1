@@ -16,27 +16,33 @@ Entrez votre nom d'utilisateur et votre mot de passe afin d'être dirigé vers l
 
 ![login](figures/main_user.png)
 
-Sur chaque page, vous pouvez appuyer sur le bouton `Home` en haut à gauche pour revenir à cette page.
+Sur chaque page, vous pouvez appuyer sur le bouton `Home` en haut à gauche pour revenir à cette page, ou sur "MESSAGERIE".
 
-Le bouton `Disconnect` vous permets de quitter votre compte et retourner à la page de login.
+Le bouton `Disconnect` vous permet de quitter votre compte et retourner à la page de login.
 
 ### Boîte de réception
 
-En appuyant sur le bouton `boite de réception`, vous arrivez sur la page suivante : 
+En appuyant sur le bouton `boite de réception` dans le menu principal, vous arrivez sur la page suivante : 
 
 ![login](figures/mailbox.png)
 
-Sur cette page, vous pouvez voir les messages reçus. 
+Sur cette page, vous pouvez voir les messages reçus pour le compte sélectionné.
+
+#### Supprimer un mail
 
 Pour supprimer un mail, cliquez sur le bouton `Delete` de sa ligne. 
+
+#### Afficher les détails d'un mail
 
 Le bouton `Details` vous permets d'afficher le contenu d'un mail : 
 
 ![login](figures/mail.png)
 
-Le contenu du message est dans le champs `Corps`
+Le contenu du message est dans le champ `Corps`
 
-Si vous souhaitez y répondre, appuyez simplement sur le bouton `Answer` qui vous redirigera sur la page décrite au point suivant.
+#### Répondre à un mail reçu
+
+Si vous souhaitez y répondre, appuyez simplement sur le bouton `Answer` qui vous redirigera sur la page décrite au point suivant. L'expéditeur du message sera automatiquement prérempli comme destinataire de la réponse.
 
 ### Nouveau message
 
@@ -137,6 +143,8 @@ Un administrateur peut effectuer les mêmes opérations qu’un utilisateur lamb
 
 Les fonctionnalités des administrateurs sont les suivantes : ajouter, supprimer ou modifier un utilisateur. 
 
+### Créer un nouvel utilisateur
+
 Pour ajouter un utilisateur, cliquez sur le bouton `Créer un nouvel utilisateur`. 
 
 La page suivante s'ouvre : 
@@ -153,13 +161,19 @@ Et finalement le champs Rôle permet de définir si un utilisateur sera un simpl
 
 Une fois ces champs remplis, appuyez sur le bouton `Créer`et un nouvel utilisateur sera ajouter à la base de données.
 
+### Lister les utilisateurs
+
 En tant qu'administrateur, vous avez également accès à la liste des utilisateurs. Pour y accéder, sur la page principale, appuyez sur le bouton `Liste des utilisateurs`.
 
 Vous arrivez alors sur cette page : 
 
 ![login](figures/list_user.png)
 
+#### Supprimer un utilisateur
+
 Si vous souhaitez supprimer un utilisateur, appuyez simplement le bouton `Delete ` sur la ligne de l'utilisateur à enlever. 
+
+### Editer un utilisateur
 
 Pour le modifier, cliquez sur `Edit`. La page suivante s'ouvre : 
 

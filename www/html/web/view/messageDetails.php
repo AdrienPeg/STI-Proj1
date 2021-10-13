@@ -36,7 +36,6 @@ $bdd->verifyUser();
 
             <?php
             $messageid = $_POST['messageDetailsTab'];
-            echo $messageid;
             $message = $bdd->getMessage($messageid);
 
 
