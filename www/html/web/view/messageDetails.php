@@ -43,7 +43,7 @@ $bdd->verifyUser();
             //Création du tableau qui contiendra nos données
             echo "<table class='table'>
 						<tr>
-						<th>ID User</th>
+						<th>ID Message</th>
 						<th>Date de réception</th>
 						<th>Expéditeur</th>
 						<th>Sujet</th>
