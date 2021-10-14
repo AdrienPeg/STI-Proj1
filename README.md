@@ -24,7 +24,7 @@ Une fois les credentials entrés, vous arrivez sur la page principale du site :
 
 ![login](figures/main_page.png)
 
-Un administrateur peut effectuer les mêmes opérations qu’un utilisateur lambda en plus de ses privilèges d’administrateur. Dans cette partie du manuel, seules les opérations disponibles uniquement aux administrateurs seront abordées. Si vous souhaitez vous renseigner sur celles disponibles pour tous, veuillez vous référer à la section précédente : `Manuel Utilisateur`.
+Un administrateur peut effectuer les mêmes opérations qu’un utilisateur lambda en plus de ses privilèges d’administrateur. Dans cette partie du manuel, seules les opérations disponibles uniquement aux administrateurs seront abordées. Si vous souhaitez vous renseigner sur celles disponibles pour tous, veuillez vous référer à la section suivante : `Manuel Utilisateur`.
 
 Les fonctionnalités uniques aux administrateurs sont les suivantes : ajouter, supprimer ou modifier un utilisateur. 
 
