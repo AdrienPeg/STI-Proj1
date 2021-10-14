@@ -28,11 +28,11 @@ En appuyant sur le bouton `boite de réception` dans le menu principal, vous arr
 
 Sur cette page, vous pouvez voir les messages reçus pour le compte sélectionné.
 
-#### Supprimer un mail
+### Supprimer un mail
 
 Pour supprimer un mail, cliquez sur le bouton `Delete` de sa ligne. 
 
-#### Afficher les détails d'un mail
+### Afficher les détails d'un mail
 
 Le bouton `Details` vous permets d'afficher le contenu d'un mail : 
 
@@ -40,7 +40,7 @@ Le bouton `Details` vous permets d'afficher le contenu d'un mail :
 
 Le contenu du message est dans le champ `Corps`
 
-#### Répondre à un mail reçu
+### Répondre à un mail reçu
 
 Si vous souhaitez y répondre, appuyez simplement sur le bouton `Answer` qui vous redirigera sur la page décrite au point suivant. L'expéditeur du message sera automatiquement prérempli comme destinataire de la réponse.
 
@@ -73,8 +73,7 @@ Une fois sur cette page, entrez d'abord votre ancien mot de passe, puis entrez l
 Pour commencer, clonez ce repo en local. Lancez ensuite la commande suivante : 
 
 ```
-docker run -ti -v "$PWD/site":/usr/share/nginx/ -d -p 8080:80 --name sti_project 
---hostname sti arubinst/sti:project2018 
+docker run -ti -d -p 8080:80 --name sti_project --hostname sti arubinst/sti:project2018 
 ```
 
 Si un service tourne déjà sur le port 8080, vous pouvez sans autre le modifier.
@@ -169,7 +168,7 @@ Vous arrivez alors sur cette page :
 
 ![login](figures/list_user.png)
 
-#### Supprimer un utilisateur
+### Supprimer un utilisateur
 
 Si vous souhaitez supprimer un utilisateur, appuyez simplement le bouton `Delete ` sur la ligne de l'utilisateur à enlever. 
 
@@ -180,3 +179,17 @@ Pour le modifier, cliquez sur `Edit`. La page suivante s'ouvre :
 ![login](figures/edit_user.png)
 
 Ici, vous pouvez modifier le mot de passe, la validité et le rôle d'un utilisateur. Son nom d'utilisateur n'est pas modifiable. Une fois les modifications réalisées, appuyez sur `Modifier`. Si vous souhaitez annuler, appuyez sur `Back`
+
+### Éteindre le site
+
+Pour éteindre proprement le site, entrez les deux commandes suivantes :
+
+```
+docker kill sti_project
+```
+
+```
+docker rm sti_project
+```
+
+Le container sera alors supprimé, et les étapes nécessaire à sa création devront à nouveau être effectuées pour qu'il soit fonctionnel.
