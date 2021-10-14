@@ -6,15 +6,19 @@ Auteurs : Peguiron Adrien, Viotti Nicolas
 
 ### Général
 
-Avant de pouvoir utiliser le site de messagerie, un administrateur doit l'avoir mis en place et vous avoir créé un compte.
+Pour vous connecter au site, dirigez vous à l'adresse 127.0.0.1:8080 dans votre navigateur (si votre administrateur vous a donné un autre port, remplacez le 8080 par celui-ci). Vous arrivez alors sur la page de login :
 
-Une fois cela fait, dirigez vous à l'adresse 127.0.0.1:8080 dans votre navigateur (si votre administrateur vous a donné un autre port, remplacez le 8080 par celui-ci). Vous arrivez alors sur la page de login :
-
- ![login](figures/login.png)
+![login](figures/login.png)
 
 Entrez votre nom d'utilisateur et votre mot de passe afin d'être dirigé vers la page suivante : 
 
 ![login](figures/main_user.png)
+
+Un utilisateur par défaut est disponible avec les identifiants suivant: 
+
+Nom d'utilisateur : `collaborateur`, 
+
+Mot de passe : `1234`.
 
 Sur chaque page, vous pouvez appuyer sur le bouton `Home` en haut à gauche pour revenir à cette page, ou sur "MESSAGERIE".
 
@@ -193,3 +197,5 @@ docker rm sti_project
 ```
 
 Le container sera alors supprimé, et les étapes nécessaire à sa création devront à nouveau être effectuées pour qu'il soit fonctionnel.
+
+Tous les messages et utilisateurs à l'exception de l'administrateur seront également supprimés.
