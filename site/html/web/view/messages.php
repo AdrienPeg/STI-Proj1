@@ -27,7 +27,7 @@
 
 include_once("/usr/share/nginx/html/web/functions/database.php");
 $bdd = new database();
-$bdd->verifyUser();
+$bdd->verifyUser(); //Vérifie que la session est celle d'un utilisateur
 ?>
 
 <div class="container" id="DeleteEdit">

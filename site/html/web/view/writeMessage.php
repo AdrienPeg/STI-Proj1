@@ -50,12 +50,11 @@ $bdd->verifyUser();
                                     <label for="destinataire">Destinataire :</label>
                                     <select id="destinataire" name="destinataire" class="form-control" required>
                                         <?php
-                                        //Selection de toutes les couleurs autorisées pour le bracelet de ce modèle.
-                                        echo 'Pre-call';
+                                        //Selection de tous les utilisateurs
                                         $users = $bdd->getAllUsers();
-                                        echo 'Post-call';
                                         foreach ($users as $row) {
                                             if (isset($_POST['answerTab']) && $_POST['answerTab'] == $row['id']) {
+                                                //Si le message est une réponse à un autre, l'utilisateur sélectionné par défaut est celui à qui répondre
                                                 echo "<option value='{row['id']}'selected='selected'>{$row['username']}</option>";
                                             } else {
                                                 if ($row['id'] != $_SESSION['id']) {

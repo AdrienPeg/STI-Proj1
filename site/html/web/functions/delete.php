@@ -1,12 +1,12 @@
 <?php
 #################################################################
 #
-#	Projet BDR
-#	Auteurs:		Adrien Peguiron, Nicolas Viotti, Luca Zacheo
+#	Projet STI
+#	Auteurs:		Adrien Peguiron, Nicolas Viotti
 #
 #################################################################
 #
-# 	Date :		11.01.2021
+# 	Date :		01.10.2021
 #	Version :		1.0
 #	Révisions :		-
 #

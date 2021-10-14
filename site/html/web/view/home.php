@@ -34,6 +34,7 @@ header('Content-type: text/html; charset=utf-8');
 </header>
 <body>
 
+<!-- Vérification des variables de session pour la gestion de l'affichage -->
 <?php if (!isset($_SESSION) || !isset($_SESSION['loggedin']) || !isset($_SESSION['username']) || $_SESSION['loggedin'] == false) {
     ?>
 
@@ -43,7 +44,7 @@ header('Content-type: text/html; charset=utf-8');
         <p>Please fill in your credentials to login.</p>
 
         <?php
-        if (!empty($login_err)) {
+        if (!empty($login_err)) { // Affichage de l'erreur
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
         }
         ?>
@@ -65,7 +66,7 @@ header('Content-type: text/html; charset=utf-8');
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <?php if (isset($_POST['login_result']) && $_POST['login_result'] == false) {
+            <?php if (isset($_POST['login_result']) && $_POST['login_result'] == false) { //Vérification de l'état du login
                 echo '<p> Login failed </p>';
             } ?>
         </form>
@@ -91,7 +92,7 @@ header('Content-type: text/html; charset=utf-8');
                     <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>"/>
                     <input class='btn btn-secondary btn-sm' type="submit" value="Editer le mot de passe"/>
                 </form>
-                <?php if (isset($_SESSION['type']) && $_SESSION['type'] == 'admin') { ?>
+                <?php if (isset($_SESSION['type']) && $_SESSION['type'] == 'admin') { //Vérification que la session est celle d'un admin?>
                     <form action="<?php echo '?page=users' ?>" method="post">
                         <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>"/>
                         <input class='btn btn-secondary btn-sm' type="submit" value="Liste des utilisateurs"/>

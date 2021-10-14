@@ -48,7 +48,7 @@ $redirect = $bdd->verifyAdmin(); //Vérifie que la session soit celle d'un admin
                     <div class="row">
                         <div class="col">
                             <form action="web/functions/createUser.php" method="post" enctype="multipart/form-data">
-                                <?php if (isset($_POST['result'])) {
+                                <?php if (isset($_POST['result'])) { //Vérification du résultat de la création
                                     if ($_POST['result'] == true) {
                                         echo '<p> User created </p>';
                                     } else {

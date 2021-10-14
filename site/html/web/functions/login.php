@@ -1,4 +1,20 @@
 <?php
+#################################################################
+#
+#	Projet STI
+#	Auteurs:		Adrien Peguiron, Nicolas Viotti
+#
+#################################################################
+#
+# 	Date :		01.10.2021
+#	Version :		1.0
+#	Révisions :		-
+#
+#################################################################
+#
+#	Page: send.php (Page permettant l'appel à la fonction de login)
+#
+################################################################
 include_once("/usr/share/nginx/html/web/functions/database.php");
 $bdd = new database();
 

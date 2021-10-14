@@ -34,7 +34,7 @@
 
 include_once("/usr/share/nginx/html/web/functions/database.php");
 $bdd = new database();
-$bdd->verifyUser();
+$bdd->verifyUser(); //Vérifie que la session est celle d'un utilisateur
 ?>
 <div id="ajout-articles">
     <div style="border-bottom: 1px solid #C4C3C3;" class="container" id="formulaire">
@@ -45,7 +45,7 @@ $bdd->verifyUser();
                     <div class="row">
                         <div class="col">
                             <form action="web/functions/password.php" method="post" enctype="multipart/form-data">
-                                <?php if (isset($_POST['result'])) {
+                                <?php if (isset($_POST['result'])) { //Vérification du résultat de la modification
                                     if ($_POST['result'] == true) {
                                         echo '<p> Password changed </p>';
                                     } else {

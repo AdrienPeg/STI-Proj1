@@ -47,7 +47,7 @@ $redirect = $bdd->verifyAdmin(); //Vérifie que la session soit celle d'un admin
                     <div class="row">
                         <div class="col">
                             <form action="web/functions/editUser.php" method="post" enctype="multipart/form-data">
-                                <?php if (isset($_POST['editResult'])) {
+                                <?php if (isset($_POST['editResult'])) { //Vérification du résultat de la modification
                                     if ($_POST['editResult'] == true) {
                                         echo '<p> User edited </p>';
                                     } else {
@@ -67,6 +67,7 @@ $redirect = $bdd->verifyAdmin(); //Vérifie que la session soit celle d'un admin
                                 <p>
                                     <label for="valid">Validité :</label>
                                     <select id="valid" name="valid" class="form-control" required>
+                                        <!-- Sélectionne la valeur actuelle du champ de validité comme valeur par défaut -->
                                         <option value='0' <?php if ($user['valid'] == 0) echo 'selected="selected"'; ?>>
                                             Invalide
                                         </option>
