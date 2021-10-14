@@ -62,7 +62,7 @@ Il n'est pas possible d'envoyer un message à quelqu'un qui n'a pas de compte.
 
 Spécifiez ensuite un sujet qui donne un aperçu de votre message, puis entrez le corps de votre message dans le champs `Message`. 
 
-<u>Attention ! un message contenant une apostrophe ne sera pas envoyé.</u>
+**<u>Attention ! un message contenant une apostrophe ne sera pas envoyé.</u>**
 
 Il ne reste plus qu'à appuyer sur `Envoyer` pour que votre message soit délivré à son destinataire.
 
@@ -82,7 +82,7 @@ Pour commencer, clonez ce repo en local.
 
 Exécutez ensuite le script `setup.sh`. Ce dernier sert à mettre en place le container docker avec tout ce dont il a besoin pour la bonne exécution du site. Les différentes étapes de la mise en place du container sont décrites plus en détail dans les commentaires du script.
 
-<u>Si le script retourne une erreur essayez de le relancer.</u> 
+**<u>Si le script retourne une erreur essayez de le relancer.</u>** 
 
 Une fois l’exécution terminée, le site est accessible à l’adresse 127.0.0.1:8080 (si vous avez choisi d'utiliser un autre port, remplacez le 8080 par celui-ci.)
 
