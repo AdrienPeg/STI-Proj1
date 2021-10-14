@@ -172,6 +172,8 @@ Vous arrivez alors sur cette page :
 
 ![login](figures/list_user.png)
 
+Une validité de 1 correspond à un utilisateur valide, une valide de 0 correspond à un utilisateur invalide. 
+
 ### Supprimer un utilisateur
 
 Si vous souhaitez supprimer un utilisateur, appuyez simplement le bouton `Delete ` sur la ligne de l'utilisateur à enlever. 
