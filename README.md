@@ -6,37 +6,45 @@ Auteurs : Peguiron Adrien, Viotti Nicolas
 
 ### Général
 
-Avant de pouvoir utiliser le site de messagerie, un administrateur doit l'avoir mis en place et vous avoir créé un compte.
-
-Une fois cela fait, dirigez vous à l'adresse 127.0.0.1:8080 dans votre navigateur (si votre administrateur vous a donné un autre port, remplacez le 8080 par celui-ci). Vous arrivez alors sur la page de login :
-
- ![login](figures/login.png)
+Pour vous connecter au site, dirigez vous à l'adresse 127.0.0.1:8080 dans votre navigateur (si votre administrateur vous a donné un autre port, remplacez le 8080 par celui-ci). Vous arrivez alors sur la page de login :![login](figures/login.png)
 
 Entrez votre nom d'utilisateur et votre mot de passe afin d'être dirigé vers la page suivante : 
 
 ![login](figures/main_user.png)
 
-Sur chaque page, vous pouvez appuyer sur le bouton `Home` en haut à gauche pour revenir à cette page.
+Un utilisateur par défaut est disponible avec les identifiants suivant: 
 
-Le bouton `Disconnect` vous permets de quitter votre compte et retourner à la page de login.
+Nom d'utilisateur : `collaborateur`, 
+
+Mot de passe : `1234`.
+
+Sur chaque page, vous pouvez appuyer sur le bouton `Home` en haut à gauche pour revenir à cette page, ou sur "MESSAGERIE".
+
+Le bouton `Disconnect` vous permet de quitter votre compte et retourner à la page de login.
 
 ### Boîte de réception
 
-En appuyant sur le bouton `boite de réception`, vous arrivez sur la page suivante : 
+En appuyant sur le bouton `boite de réception` dans le menu principal, vous arrivez sur la page suivante : 
 
 ![login](figures/mailbox.png)
 
-Sur cette page, vous pouvez voir les messages reçus. 
+Sur cette page, vous pouvez voir les messages reçus pour le compte sélectionné.
+
+### Supprimer un mail
 
 Pour supprimer un mail, cliquez sur le bouton `Delete` de sa ligne. 
+
+### Afficher les détails d'un mail
 
 Le bouton `Details` vous permets d'afficher le contenu d'un mail : 
 
 ![login](figures/mail.png)
 
-Le contenu du message est dans le champs `Corps`
+Le contenu du message est dans le champ `Corps`
 
-Si vous souhaitez y répondre, appuyez simplement sur le bouton `Answer` qui vous redirigera sur la page décrite au point suivant.
+### Répondre à un mail reçu
+
+Si vous souhaitez y répondre, appuyez simplement sur le bouton `Answer` qui vous redirigera sur la page décrite au point suivant. L'expéditeur du message sera automatiquement prérempli comme destinataire de la réponse.
 
 ### Nouveau message
 
@@ -67,8 +75,7 @@ Une fois sur cette page, entrez d'abord votre ancien mot de passe, puis entrez l
 Pour commencer, clonez ce repo en local. Lancez ensuite la commande suivante : 
 
 ```
-docker run -ti -v "$PWD/site":/usr/share/nginx/ -d -p 8080:80 --name sti_project 
---hostname sti arubinst/sti:project2018 
+docker run -ti -d -p 8080:80 --name sti_project --hostname sti arubinst/sti:project2018 
 ```
 
 Si un service tourne déjà sur le port 8080, vous pouvez sans autre le modifier.
@@ -105,7 +112,7 @@ chmod 777 /usr/share/nginx/databases
 chmod 777 /usr/share/nginx/databases/database.sqlite
 ```
 
-Quittez alors le mode intéractif du container avec cette commande : 
+Quittez alors le mode interactif du container avec cette commande : 
 
 ```
 exit
@@ -137,6 +144,8 @@ Un administrateur peut effectuer les mêmes opérations qu’un utilisateur lamb
 
 Les fonctionnalités des administrateurs sont les suivantes : ajouter, supprimer ou modifier un utilisateur. 
 
+### Créer un nouvel utilisateur
+
 Pour ajouter un utilisateur, cliquez sur le bouton `Créer un nouvel utilisateur`. 
 
 La page suivante s'ouvre : 
@@ -153,16 +162,41 @@ Et finalement le champs Rôle permet de définir si un utilisateur sera un simpl
 
 Une fois ces champs remplis, appuyez sur le bouton `Créer`et un nouvel utilisateur sera ajouter à la base de données.
 
+### Lister les utilisateurs
+
 En tant qu'administrateur, vous avez également accès à la liste des utilisateurs. Pour y accéder, sur la page principale, appuyez sur le bouton `Liste des utilisateurs`.
 
 Vous arrivez alors sur cette page : 
 
 ![login](figures/list_user.png)
 
+
+
+Une validité de 1 correspond à un utilisateur valide, une valide de 0 correspond à un utilisateur invalide. 
+
+### Supprimer un utilisateur
 Si vous souhaitez supprimer un utilisateur, appuyez simplement le bouton `Delete ` sur la ligne de l'utilisateur à enlever. 
+
+### Editer un utilisateur
 
 Pour le modifier, cliquez sur `Edit`. La page suivante s'ouvre : 
 
 ![login](figures/edit_user.png)
 
 Ici, vous pouvez modifier le mot de passe, la validité et le rôle d'un utilisateur. Son nom d'utilisateur n'est pas modifiable. Une fois les modifications réalisées, appuyez sur `Modifier`. Si vous souhaitez annuler, appuyez sur `Back`
+
+### Éteindre le site
+
+Pour éteindre proprement le site, entrez les deux commandes suivantes :
+
+```
+docker kill sti_project
+```
+
+```
+docker rm sti_project
+```
+
+Le container sera alors supprimé, et les étapes nécessaire à sa création devront à nouveau être effectuées pour qu'il soit fonctionnel.
+
+Tous les messages et utilisateurs à l'exception de l'administrateur seront également supprimés.
