@@ -10,9 +10,7 @@ Pour vous connecter au site, dirigez vous à l'adresse 127.0.0.1:8080 dans votre
 
 ![login](figures/login.png)
 
-Entrez votre nom d'utilisateur et votre mot de passe afin d'être dirigé vers la page suivante : 
-
-![login](figures/main_user.png)
+Entrez votre nom d'utilisateur et votre mot de passe afin d'être dirigé vers la page principale.
 
 Un utilisateur par défaut est disponible avec les identifiants suivant: 
 
@@ -20,7 +18,11 @@ Nom d'utilisateur : `collaborateur`,
 
 Mot de passe : `1234`.
 
-Sur chaque page, vous pouvez appuyer sur le bouton `Home` en haut à gauche pour revenir à cette page, ou sur "MESSAGERIE".
+La page principale est la suivante :
+
+![login](figures/main_user.png)
+
+Sur chaque page, vous pouvez appuyer sur le bouton `Home` en haut à gauche ou sur le titre du site pour revenir à cette page.
 
 Le bouton `Disconnect` vous permet de quitter votre compte et retourner à la page de login.
 
@@ -54,13 +56,17 @@ Depuis la page principale, le bouton `Nouveau message` vous emmène sur cette pa
 
 ![login](figures/send_message.png)
 
-Vous pouvez ici envoyer un message au différents utilisateurs inscrits sur le site. 
+Vous pouvez ici envoyer un message aux différents utilisateurs inscrits sur le site. 
 
-Pour choisir à quel utilisateur envoyer, choisissez en un dans la liste déroulante.
+Pour choisir à quel utilisateur envoyer, choisissez-en un dans la liste déroulante.
 
 Il n'est pas possible d'envoyer un message à quelqu'un qui n'a pas de compte.
 
-Spécifiez ensuite un sujet qui donne un aperçu de votre message, puis entrez le corps de votre message dans le champs `Message`. Il ne reste plus qu'à appuyer sur `Envoyer` pour que votre message parte.
+Spécifiez ensuite un sujet qui donne un aperçu de votre message, puis entrez le corps de votre message dans le champs `Message`. 
+
+<u>Attention ! un message contenant une apostrophe ne sera pas envoyé.</u>
+
+Il ne reste plus qu'à appuyer sur `Envoyer` pour que votre message soit délivré à son destinataire.
 
 ### Editer le mot de passe.
 
@@ -74,63 +80,13 @@ Une fois sur cette page, entrez d'abord votre ancien mot de passe, puis entrez l
 
 ### Mise en place
 
-Pour commencer, clonez ce repo en local. Lancez ensuite la commande suivante : 
+Pour commencer, clonez ce repo en local. 
 
-```
-docker run -ti -d -p 8080:80 --name sti_project --hostname sti arubinst/sti:project2018 
-```
+Exécutez ensuite le script `setup.sh`. Ce dernier sert à mettre en place le container docker avec tout ce dont il a besoin pour la bonne exécution du site. Les différentes étapes de la mise en place du container sont décrites plus en détail dans les commentaires du script.
 
-Si un service tourne déjà sur le port 8080, vous pouvez sans autre le modifier.
+<u>Si le script retourne une erreur essayez de le relancer.</u> 
 
-Cette commande permet de télécharger l’image docker nécessaire au bon fonctionnement du site, puis de lancer un container avec cette image.
-
-Une fois le container lancé, copiez le contenu du site à l’aide des deux commandes suivantes :
-
-```
-docker cp /your/repo/site/databases/ sti_project:/usr/share/nginx
-```
-
-```
-docker cp /your/repo/site/html/ sti_project:/usr/share/nginx
-```
-
-Où `/your/repo` est le chemin jusqu’au clone de votre repo.
-
-Lancez le container en mode interactif grâce à la commande suivante : 
-
-```
-docker exec -it sti_project /bin/bash
-```
-
-Pour faire des opérations sur la base de donnée, il est nécessaire de relaxer les permissions sur celle-ci. 
-
-Effectuez les deux commande suivantes :
-
-```
-chmod 777 /usr/share/nginx/databases
-```
-
-```
-chmod 777 /usr/share/nginx/databases/database.sqlite
-```
-
-Quittez alors le mode intéractif du container avec cette commande : 
-
-```
-exit
-```
-
-Lancez ensuite les deux commandes suivantes : 
-
-```
-docker exec -u root sti_project service nginx start
-```
-
-```
-docker exec -u root sti_project service php5-fpm start
-```
-
-Une fois l’exécution de ces dernières terminées, le site est accessible à l’adresse 127.0.0.1:8080 (si vous avez modifié le port, n’oubliez pas de le changer ici également.)
+Une fois l’exécution terminée, le site est accessible à l’adresse 127.0.0.1:8080 (si vous avez choisi d'utiliser un autre port, remplacez le 8080 par celui-ci.)
 
 Vous arrivez ensuite sur la page de login suivante : ![login](figures/login.png)
 
@@ -142,9 +98,9 @@ Une fois les credentials entrés, vous arrivez sur la page principale du site :
 
 ![login](figures/main_page.png)
 
-Un administrateur peut effectuer les mêmes opérations qu’un utilisateur lambda en plus de ses privilèges d’administrateur. Dans cette partie du manuel, seules les opérations disponibles uniquement aux administrateurs seront abordées. Si vous souhaitez vous renseigner sur celles disponibles pour tous, veuillez vous référer à la section précédente `Manuel Utilisateur`.
+Un administrateur peut effectuer les mêmes opérations qu’un utilisateur lambda en plus de ses privilèges d’administrateur. Dans cette partie du manuel, seules les opérations disponibles uniquement aux administrateurs seront abordées. Si vous souhaitez vous renseigner sur celles disponibles pour tous, veuillez vous référer à la section précédente : `Manuel Utilisateur`.
 
-Les fonctionnalités des administrateurs sont les suivantes : ajouter, supprimer ou modifier un utilisateur. 
+Les fonctionnalités uniques aux administrateurs sont les suivantes : ajouter, supprimer ou modifier un utilisateur. 
 
 ### Créer un nouvel utilisateur
 
@@ -198,6 +154,6 @@ docker kill sti_project
 docker rm sti_project
 ```
 
-Le container sera alors supprimé, et les étapes nécessaire à sa création devront à nouveau être effectuées pour qu'il soit fonctionnel.
+Le container sera alors supprimé, et le script de création devront à nouveau être effectuées pour qu'il soit fonctionnel.
 
 Tous les messages et utilisateurs à l'exception de l'administrateur seront également supprimés.
