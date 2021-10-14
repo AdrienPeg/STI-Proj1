@@ -6,9 +6,7 @@ Auteurs : Peguiron Adrien, Viotti Nicolas
 
 ### Général
 
-Pour vous connecter au site, dirigez vous à l'adresse 127.0.0.1:8080 dans votre navigateur (si votre administrateur vous a donné un autre port, remplacez le 8080 par celui-ci). Vous arrivez alors sur la page de login :
-
-![login](figures/login.png)
+Pour vous connecter au site, dirigez vous à l'adresse 127.0.0.1:8080 dans votre navigateur (si votre administrateur vous a donné un autre port, remplacez le 8080 par celui-ci). Vous arrivez alors sur la page de login :![login](figures/login.png)
 
 Entrez votre nom d'utilisateur et votre mot de passe afin d'être dirigé vers la page principale.
 
@@ -128,10 +126,11 @@ Vous arrivez alors sur cette page :
 
 ![login](figures/list_user.png)
 
+
+
 Une validité de 1 correspond à un utilisateur valide, une valide de 0 correspond à un utilisateur invalide. 
 
 ### Supprimer un utilisateur
-
 Si vous souhaitez supprimer un utilisateur, appuyez simplement le bouton `Delete ` sur la ligne de l'utilisateur à enlever. 
 
 ### Editer un utilisateur
